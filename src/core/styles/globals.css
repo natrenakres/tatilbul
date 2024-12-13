@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #fff;
   --foreground: #171717;
+  --font-geist-sans: 'Geist', sans-serif;
+  --font-geist-mono: 'Geist_Mono' monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,8 +16,11 @@
   }
 }
 
+html {
+  @apply font-sans;
+}
+
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);  
 }
