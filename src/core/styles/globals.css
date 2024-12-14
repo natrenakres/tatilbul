@@ -5,8 +5,7 @@
 :root {
   --background: #fff;
   --foreground: #171717;
-  --font-geist-sans: 'Geist', sans-serif;
-  --font-geist-mono: 'Geist_Mono' monospace;
+  --font-inter-sans: 'Inter', sans-serif;  
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { geistSans, geistMono } from '@/src/core/font';
+import { sans } from '@/src/core/font';
 
 import "@/src/core/styles/globals.css";
 import { TheHeader } from '@/src/shared/ui/the-header';
@@ -19,7 +19,7 @@ export function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${sans.variable} antialiased`}
       >
         <AuthWrapper>
           <TheHeader />

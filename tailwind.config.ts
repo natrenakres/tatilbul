@@ -14,8 +14,7 @@ export default {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"], 
-        mono: ["var(--font-geist-mono)", "monospace"],
+        sans: ["var(--font-inter-sans)", "sans-serif"],         
       },
     },
   },
