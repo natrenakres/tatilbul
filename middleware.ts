@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { checkAuth } from "./src/shared/auth/checkAuth";
 
 
 export async function middleware(request: NextRequest) {
-    const isAuthenticated = false;
+    const {isAuthenticated} = await checkAuth();
 
     if(!isAuthenticated) {
         return NextResponse.redirect(new URL('/login', request.url));
@@ -14,5 +15,5 @@ export async function middleware(request: NextRequest) {
 
 
 export const config = {
-    matcher: ['/profile']
+    matcher: ['/profile/:path*']
 }

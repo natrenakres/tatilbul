@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { geistSans, geistMono } from '@/src/core/font';
 
 import "@/src/core/styles/globals.css";
+import { TheHeader } from '@/src/shared/ui/the-header';
+import { AuthWrapper } from '@/src/shared/ui/auth-wrapper';
 
 export const metadata: Metadata = {
   title: 'Tatilbil | Your AI assitant for perfect holiday!',
@@ -19,18 +21,13 @@ export function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className='mx-auto max-w-7xl px-4 py-6'>
-          <header>
-            <nav>
-              <ul>
-                <li>
-                  <a href='/profile'>Profile</a>
-                </li>
-              </ul>
-            </nav>
-          </header>
-          {children}
-        </main>
+        <AuthWrapper>
+          <TheHeader />
+          <main className='mx-auto max-w-7xl px-4 py-6'>
+            <hr style={{ border: 'solid 2px red'}} />
+            {children}
+          </main>
+        </AuthWrapper>
       </body>
     </html>
   );
