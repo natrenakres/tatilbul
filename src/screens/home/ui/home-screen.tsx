@@ -1,6 +1,11 @@
 import Image from 'next/image';
-import ShowcaseImage from '../assets/showcase.svg';
+import Link from 'next/link';
 import { Button } from '@/src/shared/ui/button';
+import { Card, CardContent, CardHeader } from '@/src/shared/ui/card';
+import ShowcaseImage from "@/src/core/assets/showcase.svg";
+import Imagine from "@/src/core/assets/imagine.svg";
+import ChatBot from "@/src/core/assets/chat_bot.svg";
+import Explore from "@/src/core/assets/explore.svg";
 
 export async function HomeScreen() {
   return (
@@ -15,12 +20,17 @@ export async function HomeScreen() {
               tailored to your preferences in just one step. Stay up-to-date
               with real-time data and plan your perfect getaway effortlessly!
             </p>
-            <Button
-              className='bg-transparent hover:bg-primary border-white hover:scale-95 hover:text-primary-foreground mt-4'
-              variant={'outline'}
-            >
-              Read More
-            </Button>
+            <div className='flex gap-4 mt-4'>
+              <Button
+                className='bg-transparent hover:bg-primary border-white hover:scale-95 hover:text-primary-foreground'
+                variant={'outline'}
+              >
+                Read More
+              </Button>
+              <Button className='bg-foreground hover:bg-foreground'>
+                <Link href="/chat">Start</Link>
+              </Button>
+            </div>
           </div>
           <div className='relative top-[60px] h-[350px] w-[400px] p-[40px] z-50 justify-end'>
             <Image src={ShowcaseImage} alt='travel_booking' />
@@ -28,33 +38,42 @@ export async function HomeScreen() {
         </div>
       </section>
 
-      <section className='pt-[120px]'>
-        <div className='container'>
-          <h3 className='stats-heading text-center my-1'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
-            numquam, aperiam dolorum doloribus magnam saepe ipsum, sapiente
-            natus molestiae minus commodi blanditiis consequatur accusamus
-            perferendis rem veritatis voluptatibus illum inventore.
+      <section className='pt-[100px]'>
+        <div className='mx-auto max-w-7xl px-4 py-6 '>
+          <h3 className='max-w-7xl m-auto'>
+            Tatil yapcak yer bulmak daha önce gitseniz bile bazen günümüz temposunda cok zor oldugunu biliyoruz. Bu yüzden siz sadece ne yapmak istediginizi hayallerinizi yazin gerisini yapay zeka destekli uygulamamiz halletsin. Size tatilin tadini cikarmak kalsin.
           </h3>
-          <div className='grid grid-3 text-center my-4'>
-            <div>
-              <i className='fas fa-server fa-3x'></i>
-              <h3>10,349,504</h3>
-              <p className='text-secondary'>Deployments</p>
-            </div>
-            <div>
-              <i className='fas fa-upload fa-3x'></i>
-              <h3>987 TB</h3>
-              <p className='text-secondary'>Published</p>
-            </div>
-            <div>
-              <i className='fas fa-project-diagram fa-3x'></i>
-              <h3>2, 343, 265</h3>
-              <p className='text-secondary'>Project</p>
-            </div>
+          <div className='grid grid-cols-3  text-center gap-4 mt-4'>
+            <Card>
+              <CardHeader>
+                <Image src={Imagine} alt='imagine' />
+              </CardHeader>
+              <CardContent>
+                <h3>Imagine</h3>
+                <p className='text-secondary'>Country, city or state</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <Image src={ChatBot} alt='Chat with bot' />
+              </CardHeader>
+              <CardContent>
+                <h3>Chat with AI</h3>
+                <p className='text-secondary'>I want to go Italy with my kids.</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <Image src={Explore} alt='explore' />
+              </CardHeader>
+              <CardContent>
+                <h3>Start Holiday!</h3>
+                <p className='text-secondary'>Explore your destination</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
-      </section>
+      </section>      
     </>
   );
 }

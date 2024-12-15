@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { SiGithub } from "react-icons/si";
+
 export function TheFooter() {
     const date = new Date();
 
@@ -5,7 +8,7 @@ export function TheFooter() {
 
   return (
     <footer className='bg-primary py-5'>
-      <div className='container grid grid-3'>
+      <div className='mx-auto max-w-7xl px-4 py-6 grid grid-cols-3'>
         <div>
           <h1>Tatilbul</h1>
           <p>Copyright &copy; {year}</p>
@@ -13,20 +16,20 @@ export function TheFooter() {
         <nav>
           <ul>
             <li>
-              <a href='#'>Home</a>
+              <Link href='/'>Home</Link>
             </li>
             <li>
-              <a href='#'>Profile</a>
+              <Link href='/profile'>Profile</Link>
             </li>
             <li>
-              <a href='#'>Docs</a>
+              <Link href='/chat'>Chat</Link>
             </li>
           </ul>
         </nav>
         <div className='social'>
-          <a href='#'>
-            <i className='fab fa-github fa-2x'></i>
-          </a>          
+          <Link href='https://github.com/natrenakres/tatilbul'>
+            <SiGithub size={'2rem'} />
+          </Link>          
         </div>
       </div>
     </footer>

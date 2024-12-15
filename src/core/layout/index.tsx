@@ -20,7 +20,7 @@ export function RootLayout({
   return (
     <AuthWrapper>
       <html lang='en'>
-        <body className={`${sans.variable} antialiased`}>
+        <body className={`${sans.variable} antialiased min-h-screen`}>
           <TheHeader />
           {children}   
           <TheFooter />       

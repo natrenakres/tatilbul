@@ -10,6 +10,11 @@ html {
   @apply font-sans;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 @layer base {
   :root {
     --background: 187 100% 95%;
