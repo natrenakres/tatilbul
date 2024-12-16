@@ -1,0 +1,1 @@
+export { chatWithTatilbul } from "./actions/chatWithTatilbul";
