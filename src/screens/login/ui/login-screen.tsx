@@ -64,12 +64,12 @@ export function LoginScreen() {
               <Button type='submit' className="w-full">
                 Login
               </Button>
-              <div>
-                No account?
-                <Link href='/register'>
+              <p>
+                <span className='px-2'>No account?</span>
+                <Link className='text-primary' href='/register'>
                   Register
                 </Link>
-              </div>
+              </p>
             </div>
           </form>
         </div>

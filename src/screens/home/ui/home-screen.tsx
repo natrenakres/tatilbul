@@ -27,9 +27,11 @@ export async function HomeScreen() {
               >
                 Read More
               </Button>
-              <Button className='bg-foreground hover:bg-foreground'>
-                <Link href="/chat">Start</Link>
-              </Button>
+                <Link href="/chat">
+                  <Button className='bg-foreground hover:bg-foreground'>
+                    Start
+                  </Button>
+                </Link>
             </div>
           </div>
           <div className='relative top-[60px] h-[350px] w-[400px] p-[40px] z-50 justify-end'>
