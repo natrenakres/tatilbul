@@ -1,26 +1,12 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import { destroySession } from '../auth/destroySession';
 import Link from 'next/link';
-import { useAuth } from '../context/authContext';
 import { Button } from '../ui/button';
 import Logo from "@/src/core/assets/logo.svg";
 import Image from 'next/image';
+import auth from '../auth/auth';
 
-export function TheHeader() {
-  const router = useRouter();
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
-
-  async function handleLogout() {
-    const { success, error } = await destroySession();
-
-    if (success) {
-      setIsAuthenticated(false);
-      router.push('/login');
-    } else {
-      console.log(error);
-    }
-  }
+export async function TheHeader() {
+  
+  const  user = await auth.getUser(); 
 
   return (
     <header className='bg-primary text-primary-foreground'>
@@ -33,7 +19,7 @@ export function TheHeader() {
             <div className="md:block">
               <div className="ml-10 flex items-baseline space-x-4">
               {
-                isAuthenticated && (
+                user && (
                   <>
                     <Link className='text-primary-foreground hover:border-b-2 hover:border-primary-foreground' href='/chat'>Chat</Link>
                     <Link className='text-primary-foreground hover:border-b-2 hover:border-primary-foreground' href='/profile'>Profile</Link>
@@ -46,14 +32,18 @@ export function TheHeader() {
           <div className="ml-auto">
             <div className="ml-4 flex items-center md:ml-6 gap-4">              
             {
-              !isAuthenticated && (
+              !user && (
                 <>
                   <Link className='text-primary-foreground hover:border-b-2 hover:border-primary-foreground' href='/login'>Login</Link>              
                   <Link className='text-primary-foreground hover:border-b-2 hover:border-primary-foreground' href='/register'>Register</Link>
                 </>              
             )}
               
-              {isAuthenticated && <Button className='bg-foreground hover:bg-foreground' onClick={handleLogout}>Sign out</Button>}
+              {
+                user && <form action={auth.destroySession}>
+                          <Button className='bg-foreground hover:bg-foreground'>Sign out</Button>
+                       </form>
+              }
             </div>
           </div>
         </div>

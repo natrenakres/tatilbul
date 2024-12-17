@@ -7,6 +7,7 @@ import { Message } from '../model';
 import { mainChat } from '..';
 import { MapContainer } from '../../hotels/ui/map-container';
 import { Hotel } from '../../hotels/model';
+import { AddFavoriteButton } from './add-favorite-button';
 
 export function TheChat() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -74,6 +75,7 @@ export function TheChat() {
       <div className='bg-white p-4 shadow-md rounded-md max-w-lg'>
         <ChatWindow messages={messages} />
         <MessageInput onSend={handleSend} />
+        <AddFavoriteButton hotel={hotel} />
       </div>
       <div className='bg-white p-4 shadow-md rounded-md max-w-lg'>
         {

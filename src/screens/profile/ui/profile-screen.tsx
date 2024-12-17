@@ -6,7 +6,7 @@ export async function ProfileScreen() {
   const hotels = await getAllHotels();
 
   return (
-    <main className='mx-auto max-w-7xl px-4 py-6'>
+    <>
       <h2 className='text-lg'>My Profile</h2>
       <section>
         <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
@@ -19,6 +19,6 @@ export async function ProfileScreen() {
           ))}
         </ul>
       </section>
-    </main>
+    </>
   );
 }

@@ -10,11 +10,11 @@ export interface HotelRecord {
 }
 
 export interface Hotel {
-    name: string;
+    name: string | undefined;
     description?: string | undefined;
     address?: string | undefined;
     image?: string | undefined;    
     latitude?: string | undefined;
     longitude?: string | undefined;
-    star: number
+    star: number | undefined
 }

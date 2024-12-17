@@ -6,10 +6,13 @@ import ShowcaseImage from "@/src/core/assets/showcase.svg";
 import Imagine from "@/src/core/assets/imagine.svg";
 import ChatBot from "@/src/core/assets/chat_bot.svg";
 import Explore from "@/src/core/assets/explore.svg";
+import { TheHeader } from '@/src/shared/components/the-header';
+import { TheFooter } from '@/src/shared/components/the-footer';
 
 export async function HomeScreen() {
   return (
     <>
+      <TheHeader />
       <section className='h-[400px] bg-primary text-primary-foreground relative showcase'>
         <div className='mx-auto max-w-7xl px-4 py-6 grid overflow-visible grid-cols-[55%_45%] gap-[30px]'>
           <div className='showcase-text'>
@@ -76,6 +79,7 @@ export async function HomeScreen() {
           </div>
         </div>
       </section>      
+      <TheFooter />
     </>
   );
 }
