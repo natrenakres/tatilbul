@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ChatWindow } from './chat-window';
 import { MessageInput } from './message-input';
 import { Message } from '../model';
-import { chatWithTatilbul } from '../actions/chatWithTatilbul';
+import { mainChat } from '..';
 
 export function TheChat() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -17,26 +17,28 @@ export function TheChat() {
     };
 
     try {
-      const botMessage = await chatWithTatilbul({
+      const chatOutput = await mainChat({
+        id: `${Date.now()}-user`,
         role: userMessage.role,
-        content: userMessage.content,
+        content: userMessage.content,        
       });
+      
 
       setMessages((prev) => [
         ...prev,
         {
-          id: `${Date.now()}-typing`,
+          id: `${Date.now()}-bot`,
           role: 'assistant',
-          content: 'Typing...',
-        },
-      ]);
-
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: botMessage.id!,
-          role: 'assistant',
-          content: botMessage.content.toString(),
+          content: `
+            Name: ${chatOutput?.name} \n
+            Description: ${chatOutput?.description} \n
+            Address: ${chatOutput?.address} \n
+            Star: ${chatOutput?.star} \n
+            Lat: ${chatOutput?.latitude} \n
+            Lng: ${chatOutput?.longitude} \n
+            Image: ${chatOutput?.image} \n
+            Link: ${chatOutput?.link} \n
+          `,
         },
       ]);
     } catch (error: unknown) {

@@ -4,7 +4,6 @@ import { v4 as uuid } from "uuid"
 import { ChatCohere } from "@langchain/cohere"
 import { START, END, MessagesAnnotation, StateGraph, MemorySaver } from "@langchain/langgraph"
 import { Message, Role} from "../model/index";
-import { BaseMessage } from "@langchain/core/messages";
 
 const llm = new ChatCohere({
     apiKey: process.env.COHERE_API_KEY,
