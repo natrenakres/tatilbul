@@ -13,4 +13,15 @@ export interface ChatWindowProps {
 
 export interface MessageInputProps {
     onSend: (text: string) => void;
-  }
+}
+
+export type ChatOutput = {
+    name: string;
+    description: string;
+    address: string;
+    star: number;
+    latitude: string;
+    longitude: string;
+    link?: string | undefined;
+    image?: string | undefined;
+}
