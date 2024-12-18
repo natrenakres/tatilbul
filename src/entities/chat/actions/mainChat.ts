@@ -21,8 +21,8 @@ const outputSchema = z.object({
     link: z.string().describe("The URI of hotel website").optional(),
     image: z.string().describe("One image url from hotel facilities").optional(),
     star: z.number().describe("How many star hotel has"),
-    latitude: z.string().describe("Latitude value of hotel"),
-    longitude: z.string().describe("Longitude value of hotel")
+    latitude: z.number().describe("Latitude value of hotel"),
+    longitude: z.number().describe("Longitude value of hotel")
 })
 
 const outputParser = StructuredOutputParser.fromZodSchema(outputSchema);

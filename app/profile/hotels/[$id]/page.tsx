@@ -1,1 +1,0 @@
-export { HotelDetailScreen as default } from "@/src/screens/profile/ui/hotel-detail-screen";

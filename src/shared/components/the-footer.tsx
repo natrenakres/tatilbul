@@ -24,6 +24,9 @@ export function TheFooter() {
             <li>
               <Link href='/chat'>Chat</Link>
             </li>
+            <li>
+              <Link href='/hotels'>Hotels</Link>
+            </li>
           </ul>
         </nav>
         <div className='social'>

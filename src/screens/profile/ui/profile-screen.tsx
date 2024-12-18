@@ -1,24 +1,31 @@
-import { getAllHotels } from '@/src/entities/hotels/actions/getAllHotels';
-import { HotelCard } from '@/src/entities/hotels/ui/hotel-card';
-import Link from 'next/link';
+import auth from "@/src/shared/auth/auth";
+import { TheHeading } from "@/src/shared/components/the-heading";
+
 
 export async function ProfileScreen() {
-  const hotels = await getAllHotels();
+  const user = await auth.getUser();  
 
   return (
-    <main className='mx-auto max-w-7xl px-4 py-6'>
-      <h2 className='text-lg'>My Profile</h2>
-      <section>
-        <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
-          {hotels.map((hotel) => (
-            <li key={hotel.id}>
-              <Link href={`/profile/hotels/${hotel.id}`}>
-                <HotelCard hotel={hotel}></HotelCard>
-              </Link>
-            </li>
-          ))}
+    <section className="h-[80vh]">
+      <TheHeading>
+          My Profile
+      </TheHeading>
+      <section className="bg-white shadow rounded-lg p-4 mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+        <ul className='grid grid-cols-1 sm:grid-cols-2 gap-6'>
+          <li>
+            <label>
+              Name: 
+              <strong>{user?.name}</strong>
+            </label>
+          </li>
+          <li>
+            <label>
+              Email: 
+              <strong>{user?.email}</strong>
+            </label>
+          </li>
         </ul>
       </section>
-    </main>
+    </section>
   );
 }

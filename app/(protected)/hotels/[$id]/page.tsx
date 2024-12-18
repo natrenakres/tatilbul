@@ -1,0 +1,1 @@
+export { HotelDetailScreen as default } from "@/src/screens/hotel/ui/hotel-detail-screen";

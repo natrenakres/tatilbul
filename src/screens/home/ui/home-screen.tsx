@@ -6,10 +6,13 @@ import ShowcaseImage from "@/src/core/assets/showcase.svg";
 import Imagine from "@/src/core/assets/imagine.svg";
 import ChatBot from "@/src/core/assets/chat_bot.svg";
 import Explore from "@/src/core/assets/explore.svg";
+import { TheHeader } from '@/src/shared/components/the-header';
+import { TheFooter } from '@/src/shared/components/the-footer';
 
 export async function HomeScreen() {
   return (
     <>
+      <TheHeader />
       <section className='h-[400px] bg-primary text-primary-foreground relative showcase'>
         <div className='mx-auto max-w-7xl px-4 py-6 grid overflow-visible grid-cols-[55%_45%] gap-[30px]'>
           <div className='showcase-text'>
@@ -21,12 +24,14 @@ export async function HomeScreen() {
               with real-time data and plan your perfect getaway effortlessly!
             </p>
             <div className='flex gap-4 mt-4'>
-              <Button
-                className='bg-transparent hover:bg-primary border-white hover:scale-95 hover:text-primary-foreground'
-                variant={'outline'}
-              >
-                Read More
-              </Button>
+              <Link href="/faq">
+                <Button
+                  className='bg-transparent hover:bg-primary border-white hover:scale-95 hover:text-primary-foreground'
+                  variant={'outline'}
+                >
+                  Read More
+                </Button>
+              </Link>
                 <Link href="/chat">
                   <Button className='bg-foreground hover:bg-foreground'>
                     Start
@@ -43,7 +48,7 @@ export async function HomeScreen() {
       <section className='pt-[100px]'>
         <div className='mx-auto max-w-7xl px-4 py-6 '>
           <h3 className='max-w-7xl m-auto'>
-            Tatil yapcak yer bulmak daha önce gitseniz bile bazen günümüz temposunda cok zor oldugunu biliyoruz. Bu yüzden siz sadece ne yapmak istediginizi hayallerinizi yazin gerisini yapay zeka destekli uygulamamiz halletsin. Size tatilin tadini cikarmak kalsin.
+          Finding the perfect vacation spot, even if you’ve been there before, can sometimes feel overwhelming in today’s fast-paced world. That’s why we’ve created an AI-powered app to take the hassle out of planning. All you need to do is share your dreams and describe what you’d like to do—our app will handle the rest. You can simply focus on enjoying your vacation!
           </h3>
           <div className='grid grid-cols-3  text-center gap-4 mt-4'>
             <Card>
@@ -76,6 +81,7 @@ export async function HomeScreen() {
           </div>
         </div>
       </section>      
+      <TheFooter />
     </>
   );
 }

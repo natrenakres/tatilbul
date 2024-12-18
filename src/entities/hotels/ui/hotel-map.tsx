@@ -8,8 +8,8 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 
 
   interface MapProps {
-    latitude: string | undefined;
-    longitude: string | undefined;
+    latitude: number | undefined;
+    longitude: number | undefined;
     name: string | undefined;
     zoom: number
   }
@@ -20,7 +20,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
         return <p>Error generating map data...</p>
     }
 
-    const position: LatLngTuple = [parseFloat(latitude), parseFloat(longitude)];
+    const position: LatLngTuple = [latitude, longitude];
     return (
         <MapContainer
             center={position}
