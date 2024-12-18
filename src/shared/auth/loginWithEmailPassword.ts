@@ -3,8 +3,13 @@
 import { createAdminClient } from '../config/appwrite';
 import { cookies } from 'next/headers';
 import { z } from 'zod';
-import { LoginResult } from './model';
 import { redirect } from 'next/navigation';
+
+export interface LoginResult {
+  errors?: {
+      email?: string[] | undefined;
+  } | undefined | null
+}
 
 const loginSchema = z.object({
   email: z.string({
@@ -12,7 +17,7 @@ const loginSchema = z.object({
   }),
 });
 
-export async function createSession(
+export async function loginWithEmailPassword(
   state: LoginResult,
   formData: FormData
 ): Promise<LoginResult> {
