@@ -1,28 +1,27 @@
 'use server';
 import { createAdminClient } from "@/src/shared/config/appwrite";
+import { redirect } from "next/navigation";
+
 import { ID } from "node-appwrite";
 
-export interface CreateUserFormState {
-    success: boolean,
-    errror?: string | undefined
+export interface CreateUserFormState {    
+    error?: string | undefined | null
 }
 
-export async function createUser(previousState: CreateUserFormState, formData: FormData) {
+export async function registerWithEmail(previousState: CreateUserFormState, formData: FormData) : Promise<CreateUserFormState> {
     const email = formData.get('email');
     const name = formData.get('name');
     const password = formData.get('password');
     const confirmPassword = formData.get('confirm-password');
 
     if(!email || !name || !password) {
-        return {
-            success: false,
+        return {            
             error: "Please fill in all fields"
         }
     }
 
     if(password.toString() !== confirmPassword?.toString()) {
-        return {
-            success: false,
+        return {            
             error: 'Passwords do not match'
         }
     }
@@ -30,24 +29,20 @@ export async function createUser(previousState: CreateUserFormState, formData: F
     const { account } = await createAdminClient();
 
     try {
-        await account.create(ID.unique(), email.toString(), password.toString(), name.toString())
-
-        return {
-            success: true
-        }
+        await account.create(
+            ID.unique(), 
+            email.toString(), 
+            password.toString(), 
+            name.toString());
     }
     catch (error: unknown) {
         console.log('Registeration error', error);
-        return {
-            success: false,
+        return {            
             error: 'Could not register user'
         }
     }
 
-    
-
-
-
+    redirect('/');
 
 }
 

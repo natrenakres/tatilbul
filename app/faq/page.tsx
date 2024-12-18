@@ -1,0 +1,1 @@
+export { FaqScreen as default } from "@/src/screens/faq/ui/faq-screen";
