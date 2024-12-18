@@ -14,7 +14,7 @@ export default function LoginForm() {
         Login
       </h2>
       {
-        state && state.errors?.email?.map((e, index) => <p className='text-red-400' key={index}>{e}</p>)
+        state && state.errors?.email?.map((e, index) => <p className='text-red-500' key={index}>{e}</p>)
       }
       <div className='mb-4'>
         <label htmlFor='email' className='block text-gray-700 font-bold mb-2'>
@@ -24,8 +24,7 @@ export default function LoginForm() {
           type='email'
           id='email'
           name='email'
-          className='border rounded w-full py-2 px-3'
-          defaultValue='serkan.ertan88@gmail.com'
+          className='border rounded w-full py-2 px-3'          
           required
         />
       </div>
@@ -40,8 +39,7 @@ export default function LoginForm() {
         <input
           type='password'
           id='password'
-          name='password'
-          defaultValue='1q2w3e4R!'
+          name='password'          
           className='border rounded w-full py-2 px-3'
           required
         />

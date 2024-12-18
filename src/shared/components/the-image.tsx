@@ -5,9 +5,11 @@ import { SyntheticEvent } from 'react';
 export function TheImage({
   src,
   alt,
+  css
 }: {
-  src?: string | undefined;
-  alt: string;
+  src?: string | undefined,
+  alt: string | undefined,
+  css?: string | undefined
 }) {
   const fallbackImage = "/img/dummy_hotel.svg";
   
@@ -22,7 +24,7 @@ export function TheImage({
       src={src}
       alt={alt}
       onError={handleError}
-      className='w-full h-48 object-cover rounded-md'
+      className={ css ? css : 'w-full h-48 object-cover rounded-md'}
     />
   );
 }

@@ -22,7 +22,7 @@ export async function TheHeader() {
                 user && (
                   <>
                     <Link className='text-primary-foreground hover:border-b-2 hover:border-primary-foreground' href='/chat'>Chat</Link>
-                    <Link className='text-primary-foreground hover:border-b-2 hover:border-primary-foreground' href='/profile'>Profile</Link>
+                    <Link className='text-primary-foreground hover:border-b-2 hover:border-primary-foreground' href='/hotels'>My Hotels</Link>
                   </>
                   )
               }
@@ -40,9 +40,14 @@ export async function TheHeader() {
             )}
               
               {
-                user && <form action={auth.destroySession}>
-                          <Button className='bg-foreground hover:bg-foreground'>Sign out</Button>
-                       </form>
+                user && <>
+                  <Link href="/profile">
+                   <strong>Hi, {user.name || user.email}</strong>
+                  </Link>
+                  <form action={auth.destroySession}>
+                            <Button className='bg-foreground hover:bg-foreground'>Sign out</Button>
+                        </form>
+                </>
               }
             </div>
           </div>

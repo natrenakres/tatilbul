@@ -7,11 +7,12 @@ import { Message } from '../model';
 import { mainChat } from '..';
 import { MapContainer } from '../../hotels/ui/map-container';
 import { Hotel } from '../../hotels/model';
-import { AddFavoriteButton } from './add-favorite-button';
+import { AddFavoriteButton } from '../../hotels/ui/add-favorite-button';
+import { TestHotel } from '../../hotels/model';
 
 export function TheChat() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const[hotel, setHotel]  = useState<Hotel | undefined | null>(null);
+  const[hotel, setHotel]  = useState<Hotel | undefined | null>(TestHotel);
 
   async function handleSend(text: string) {
     const userMessage: Message = {
@@ -70,16 +71,20 @@ export function TheChat() {
     }
   }
 
+  
+
   return (
     <section className='grid grid-flow-col'>
       <div className='bg-white p-4 shadow-md rounded-md max-w-lg'>
-        <ChatWindow messages={messages} />
-        <MessageInput onSend={handleSend} />
-        <AddFavoriteButton hotel={hotel} />
+        <ChatWindow messages={messages} />        
+        {
+          hotel ? <AddFavoriteButton hotel={hotel} /> : <MessageInput onSend={handleSend} />
+        }
+        
       </div>
       <div className='bg-white p-4 shadow-md rounded-md max-w-lg'>
         {
-          hotel &&  <MapContainer hotel={hotel} />
+            hotel ?  <MapContainer hotel={hotel} /> : <p>No hotel selected</p>
         }
       </div>
     </section>

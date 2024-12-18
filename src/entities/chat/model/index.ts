@@ -20,8 +20,8 @@ export type ChatOutput = {
     description: string;
     address: string;
     star: number;
-    latitude: string;
-    longitude: string;
+    latitude: number;
+    longitude: number;
     link?: string | undefined;
     image?: string | undefined;
 }
