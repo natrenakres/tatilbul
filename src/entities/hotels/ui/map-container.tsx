@@ -19,12 +19,14 @@ export function MapContainer({ hotel } : MapContainerProps)  {
   
 
     return (
-        <HotelMap
-            latitude={hotel?.latitude}
-            longitude={hotel?.longitude}
-            name={hotel?.name}
-            zoom={13}
-          />
+        <div className='bg-white p-4 shadow-md rounded-md '>
+            <HotelMap
+                latitude={hotel?.latitude}
+                longitude={hotel?.longitude}
+                name={hotel?.name}
+                zoom={13}
+              />
+        </div>
     )
 
 }

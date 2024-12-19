@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 
 
-export function HotelStarts({ star } : { star: number | undefined}) {
+export function HotelStars({ star } : { star: number | undefined}) {
     
     if(star === undefined || star === 0) {
         return null;

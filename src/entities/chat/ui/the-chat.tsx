@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import { ChatWindow } from './chat-window';
 import { MessageInput } from './message-input';
@@ -7,14 +6,14 @@ import { Message } from '../model';
 import { mainChat } from '..';
 import { MapContainer } from '../../hotels/ui/map-container';
 import { Hotel } from '../../hotels/model';
-import { AddFavoriteButton } from '../../hotels/ui/add-favorite-button';
-import { TestHotel } from '../../hotels/model';
+import { ChatGreeting } from './chat-greeting';
 
 export function TheChat() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const[hotel, setHotel]  = useState<Hotel | undefined | null>(TestHotel);
+  const [promt, setPrompt] = useState<string>('');
+  const [hotel, setHotel] = useState<Hotel | undefined | null>(null);
 
   async function handleSend(text: string) {
+    setPrompt(text);
     const userMessage: Message = {
       id: `${Date.now()}-user`,
       role: 'user',
@@ -25,9 +24,9 @@ export function TheChat() {
       const chatOutput = await mainChat({
         id: `${Date.now()}-user`,
         role: userMessage.role,
-        content: userMessage.content,        
+        content: userMessage.content,
       });
-      
+
       const hotel: Hotel = {
         name: chatOutput?.name,
         star: chatOutput?.star,
@@ -35,58 +34,33 @@ export function TheChat() {
         description: chatOutput?.description,
         image: chatOutput?.image,
         latitude: chatOutput?.latitude,
-        longitude: chatOutput?.longitude
-      };
-
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: `${Date.now()}-bot`,
-          role: 'assistant',
-          content: `
-            Name: ${chatOutput?.name} \n
-            Description: ${chatOutput?.description} \n
-            Address: ${chatOutput?.address} \n
-            Star: ${chatOutput?.star} \n
-            Lat: ${chatOutput?.latitude} \n
-            Lng: ${chatOutput?.longitude} \n
-            Image: ${chatOutput?.image} \n
-            Link: ${chatOutput?.link} \n
-          `,
-        },
-      ]);
-
+        longitude: chatOutput?.longitude,
+      };      
       setHotel(hotel)
-
     } catch (error: unknown) {
       console.error('Error fetching bot response:', error);
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: `${Date.now()}-error`,
-          role: 'assistant',
-          content: 'Something went wrong. Please try again.',
-        },
-      ]);
+      setPrompt('Something went wrong. Please try again.');
     }
   }
 
-  
+  function newChat() {
+    setHotel(null);
+    setPrompt('');
+  }
 
   return (
-    <section className='grid grid-flow-col'>
-      <div className='bg-white p-4 shadow-md rounded-md max-w-lg'>
-        <ChatWindow messages={messages} />        
-        {
-          hotel ? <AddFavoriteButton hotel={hotel} /> : <MessageInput onSend={handleSend} />
-        }
-        
-      </div>
-      <div className='bg-white p-4 shadow-md rounded-md max-w-lg'>
-        {
-            hotel ?  <MapContainer hotel={hotel} /> : <p>No hotel selected</p>
-        }
-      </div>
+    <section>
+      {hotel ? (
+        <>
+          <ChatWindow hotel={hotel} prompt={promt} onNewChat={newChat} />
+          <MapContainer hotel={hotel} />
+        </>
+      ) : (
+        <>
+          <ChatGreeting />
+          <MessageInput onSend={handleSend} />
+        </>
+      )}
     </section>
   );
 }

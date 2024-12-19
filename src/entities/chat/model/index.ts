@@ -1,3 +1,4 @@
+import { Hotel } from "../../hotels/model";
 
 export type Role = 'user' | 'assistant';
 
@@ -8,7 +9,9 @@ export type Message = {
 }
 
 export interface ChatWindowProps {
-    messages: Message[];
+    hotel: Hotel;
+    prompt: string,
+    onNewChat: () => void;
 }
 
 export interface MessageInputProps {

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FaChevronLeft } from "react-icons/fa"
 import { Hotel } from "../model";
 import { MapContainer } from "./map-container";
-import { HotelStarts } from "./hotel-stars";
+import { HotelStars } from "./hotel-stars";
 
 export function HotelDetail( { hotel } : { hotel: Hotel | undefined}) {
   return (
@@ -27,7 +27,7 @@ export function HotelDetail( { hotel } : { hotel: Hotel | undefined}) {
 
           <ul className='space-y-2'>
             <li>              
-              <HotelStarts star={hotel?.star} />
+              <HotelStars star={hotel?.star} />
             </li>            
             <li>
               <span className='font-semibold text-gray-800'>Address:</span> {hotel?.address}
