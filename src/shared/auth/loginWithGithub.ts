@@ -16,6 +16,8 @@ export async function loginWithGithub() {
         `${origin}/oauth`,
         `${origin}/register`
     );
+
+    console.log("Redirect URL: ", redirectUrl);
     
     
     return redirect(redirectUrl);
