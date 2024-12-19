@@ -1,6 +1,16 @@
+import auth from '@/src/shared/auth/auth';
 import LoginForm from './login-form';
+import { redirect } from 'next/navigation';
 
-export function LoginScreen() {  
+
+export async function LoginScreen() {  
+  const user = await auth.getUser();
+
+  if(!user) {
+    redirect('/chat');
+  }
+
+
 
   return (
     <main className='mx-auto max-w-7xl min-h-screen px-4 py-6 sm:px-6 lg:px-8'>
