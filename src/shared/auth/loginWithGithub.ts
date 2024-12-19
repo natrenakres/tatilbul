@@ -11,11 +11,25 @@ export async function loginWithGithub() {
     const { account } = await createAdminClient();
     const origin  = (await headers()).get("origin");
 
-    const redirectUrl = await account.createOAuth2Token(
-        OAuthProvider.Github,
-        `${origin}/oauth`,
-        `${origin}/register`
-    );
+    let redirectUrl = '';
+    const successUrl = `${origin}/oauth`;
+    const failureUrl = `${origin}/register`;
+
+    console.log('Success url', successUrl)
+    console.log('Failure url', failureUrl);
+
+
+    try {
+        redirectUrl = await account.createOAuth2Token(
+            OAuthProvider.Github,
+            successUrl,
+            failureUrl
+        );
+    }
+    catch (error: unknown) {
+        console.error("OAuth Token has error:", error);
+        redirectUrl = `${origin}`;
+    }
 
     console.log("Redirect URL: ", redirectUrl);
     
