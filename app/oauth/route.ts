@@ -23,5 +23,5 @@ export async function GET(request: NextRequest) {
     });
 
 
-    return NextResponse.redirect(`${request.nextUrl.origin}`);
+    return NextResponse.redirect(`${request.nextUrl.origin}/chat`);
 }
