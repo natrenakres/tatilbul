@@ -2,16 +2,25 @@
 import { createAdminClient } from "@/src/shared/config/appwrite";
 import { redirect } from "next/navigation";
 import { HotelRecord } from "../model";
+import auth from "@/src/shared/auth/auth";
+import { Query } from "node-appwrite";
 
 
 export async function getAllHotels(): Promise<HotelRecord[]> {
     try {
         const { databases } = await createAdminClient();
 
+        const user = await auth.getUser();
+
+        if(!user) {
+            return [];
+        }
+
         // fetch hotels
         const { documents} = await databases.listDocuments(
             process.env.NEXT_PUBLIC_APPWRITE_DATABASE!, 
             process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_HOTELS!, 
+            [Query.equal('user_id', user.$id)]
         )       
 
         return documents.map<HotelRecord>(document => {

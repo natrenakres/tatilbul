@@ -11,7 +11,7 @@ const HotelMap = dynamic(() => import('@/src/entities/hotels/ui/hotel-map'), {
 });
 
 interface MapContainerProps {
-    hotel: Hotel | undefined
+    hotel: Hotel | undefined | null
 }
 
 

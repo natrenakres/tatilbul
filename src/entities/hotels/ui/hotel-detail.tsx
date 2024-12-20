@@ -5,7 +5,7 @@ import { Hotel } from "../model";
 import { MapContainer } from "./map-container";
 import { HotelStars } from "./hotel-stars";
 
-export function HotelDetail( { hotel } : { hotel: Hotel | undefined}) {
+export function HotelDetail( { hotel } : { hotel: Hotel | undefined | null}) {
   return (
     <div className='bg-white shadow rounded-lg p-6'>
       <Link href='/hotels' className='flex items-center text-gray-600 hover:text-gray-800 mb-4'>
