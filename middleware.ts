@@ -5,8 +5,7 @@ import auth from "./src/shared/auth/auth";
 export async function middleware(request: NextRequest) {
     const user = await auth.getUser();    
 
-    if(!user) {
-        request.cookies.delete("appwrite-session");
+    if(!user) {        
         return NextResponse.redirect(new URL('/login', request.url));
     }
 
