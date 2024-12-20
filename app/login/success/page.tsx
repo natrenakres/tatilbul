@@ -1,0 +1,1 @@
+export { LoginSuccess as default }  from "@/src/screens/login/ui/login-success";

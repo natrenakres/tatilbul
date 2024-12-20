@@ -22,6 +22,7 @@ export async function GET(request: NextRequest) {
         secure: true
     });
 
+    console.log('Authentication is success redirec to chat');
 
-    return NextResponse.redirect(`${request.nextUrl.origin}/chat`);
+    return NextResponse.redirect(`${request.nextUrl.origin}/login/success`);
 }
