@@ -13,11 +13,11 @@ export async function HomeScreen() {
   return (
     <>
       <TheHeader />
-      <section className='h-[400px] bg-primary text-primary-foreground relative showcase'>
-        <div className='mx-auto max-w-7xl px-4 py-6 grid overflow-visible grid-cols-[55%_45%] gap-[30px]'>
+      <section className='h-[250px] md:h-[400px] bg-primary text-primary-foreground relative showcase'>
+        <div className='mx-auto max-w-7xl px-2 py-4 grid overflow-visible md:grid-cols-[55%_45%] gap-[30px]'>
           <div className='showcase-text'>
-            <h1 className='text-[40px]'>Your AI Holiday Assistant!</h1>
-            <p className='mt-[20px]'>
+            <h1 className='text-[20px] md:text-[40px] lg:text-[50px]'>Your AI Holiday Assistant!</h1>
+            <p className='text-sm md:text-lg lg:text-xl'>
               Tatilbul helps you discover your dream holiday with ease! Our
               AI-powered system finds the best hotels and vacation options
               tailored to your preferences in just one step. Stay up-to-date
@@ -40,15 +40,15 @@ export async function HomeScreen() {
               
             </div>
           </div>
-          <div className='relative top-[60px] h-[350px] w-[400px] p-[40px] z-50 justify-end'>
+          <div className='hidden md:block relative top-[60px] h-[350px] md:w-[300px] md:p-[20px] lg:w-[400px] lg:p-[40px] z-50 justify-end'>
             <Image src={ShowcaseImage} alt='travel_booking' />
           </div>
         </div>
       </section>
 
-      <section className='pt-[100px]'>
+      <section className='pt-16 lg:pt-24'>
         <div className='mx-auto max-w-7xl px-4 py-6 '>
-          <h3 className='max-w-7xl m-auto'>
+          <h3 className='max-w-7xl m-auto text-sm md:text-lg'>
             Finding the perfect vacation spot, even if you’ve been there before,
             can sometimes feel overwhelming in today’s fast-paced world. That’s
             why we’ve created an AI-powered app to take the hassle out of
@@ -56,7 +56,7 @@ export async function HomeScreen() {
             you’d like to do—our app will handle the rest. You can simply focus
             on enjoying your vacation!
           </h3>
-          <div className='grid grid-cols-3  text-center gap-4 mt-4'>
+          <div className='grid grid-cols-1 lg:grid-cols-3 text-center gap-4 mt-4'>
             <Card>
               <CardHeader>
                 <Image src={Imagine} alt='imagine' />
