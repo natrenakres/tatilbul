@@ -3,14 +3,22 @@ import auth from "./src/shared/auth/auth";
 
 
 export async function middleware(request: NextRequest) {
-    const user = await auth.getUser();    
+    const sessionCookie = request.cookies.get('appwrite-session');
 
-    if(!user) {        
+    if(!sessionCookie) {
         return NextResponse.redirect(new URL('/login', request.url));
     }
 
-    return NextResponse.next();
+    console.log("Session cookie", sessionCookie);
 
+
+    const user = await auth.getUser();    
+
+    if(!user) {        
+        return NextResponse.redirect(new URL('/', request.url));
+    }
+
+    return NextResponse.next();
 }
 
 
